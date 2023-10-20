@@ -8,6 +8,7 @@ const db = mysql.createPool({
   password: "Toriba@2023",
   database: "consulta_coaf",
   connectionLimit: 10,
+  connectTimeout: 30000,
 });
 
 db.getConnection((err) => {
