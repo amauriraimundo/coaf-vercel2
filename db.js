@@ -1,14 +1,16 @@
 // db.js
-
+const dotenv = require("dotenv");
 const mysql = require("mysql");
+dotenv.config();
 
 const db = mysql.createPool({
-  host: "consulta_coaf.mysql.dbaas.com.br",
-  user: "consulta_coaf",
-  password: "Toriba@2023",
-  database: "consulta_coaf",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
   connectionLimit: 10,
-  connectTimeout: 30000,
+  protocol: "tcp",
 });
 
 db.getConnection((err) => {
